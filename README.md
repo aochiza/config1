@@ -4,7 +4,7 @@
 ### Постановка задачи:
 Задание №3 
 Разработать инструмент командной строки для учебного конфигурационного языка, синтаксис которого приведен далее. Этот инструмент преобразует текст из входного формата в выходной. Синтаксические ошибки выявляются с выдачей сообщений. <br />
-Входной текст на учебном конфигурационном языке принимается из файла, путь к которому задан ключом командной строки. Выходной текст на языке yaml попадает в стандартный вывод.  <br />
+Входной текст на учебном конфигурационном языке принимается из файла, путь к которому задан ключом командной строки. Выходной текст на языке toml попадает в стандартный вывод.  <br />
 ##Однострочные комментарии:  <br />
 " Это однострочный комментарий  <br />
 ##Многострочные комментарии:  <br />
@@ -39,36 +39,73 @@ $(+ имя 1) <br />
 3. mod(). <br />
 Все конструкции учебного конфигурационного языка (с учетом их 
 возможной вложенности) должны быть покрыты тестами.<br />
-### Команда для запуска main.py
+
+### Содердание файла
 ```
-python main.py
-```
-### Команда для запуска tests.py
-```
-python tests.py
-```
-### Содердание ini файла(был изменен для выполнения доп задания)
-```
-[settings]
-graphviz_path = C:\Program Files\Graphviz\bin\dot.exe
-repo_path = C:\Users\ksen\conf\logfire\.git
-output_file = output_2.gv
-commit_date = 2022-01-01
+[employee]
+name = "John Doe"
+age = 35
+
+[job]
+title = "Software Engineer"
+department = "IT"
+years_of_experience = 10
+
+[address]
+street = "123 Main St."
+city = "San Francisco"
+state = "CA"
+zip = 94102
+
+["game configuration"]
+resolution_width = 1920
+resolution_height = 1080
+fullscreen = "true"
+music_volume = 0.5
+characters = "player, enemy, npd"
+
+["web-site configuration"]
+port = 1920
+timeout = 30[employee]
+name = "John Doe"
+age = 35
+
+[job]
+title = "Software Engineer"
+department = "IT"
+years_of_experience = 10
+
+[address]
+street = "123 Main St."
+city = "San Francisco"
+state = "CA"
+zip = 94102
+
+["game configuration"]
+resolution_width = 1920
+resolution_height = 1080
+fullscreen = "true"
+music_volume = 0.5
+characters = "player, enemy, npd"
+
+["web-site configuration"]
+port = 1920
+timeout = 30
 ```
 ### Содержание output.dot
 ```
-// Git Commit Dependencies
-digraph {
-	"743fb5d720ffa8b6b99d3f53a56d54bf10c5d8d5" [label="2024-12-05 17:04:26
-Alex Hall" fillcolor="#f5a6cd" style=filled]
-	"4e4620bfc17efb53d3b07162d0b4a9462c85c07d" -> "743fb5d720ffa8b6b99d3f53a56d54bf10c5d8d5"
-	"4e4620bfc17efb53d3b07162d0b4a9462c85c07d" [label="2024-12-05 16:59:17
-Alex Hall" fillcolor="#f5a6cd" style=filled]
-	"3a70878f7ed25efa62874837aee690799ea00257" -> "4e4620bfc17efb53d3b07162d0b4a9462c85c07d"
-	"3a70878f7ed25efa62874837aee690799ea00257" [label="2024-12-05 15:54:59
-......
+cat employee.toml | python main.py
+set v1 = 1920;
+dict(
+employee = dict(name = John Doe, age = 35),
+job = dict(title = Software Engineer, department = IT, years_of_experience = 10),
+address = dict(street = 123 Main St., city = San Francisco, state = CA, zip = 94102),
+game configuration = dict(resolution_width = |v1|, resolution_height = 1080, fullscreen = true, music_volume = 0.5, characters = player, enemy, npd),
+web-site configuration = dict(port = |v1|, timeout = 30),
 ```
 ### Результат тестов main.py
-![image](https://github.com/user-attachments/assets/8ff689d1-67ef-43b3-8858-2fe920d6e936)
+![image](https://github.com/user-attachments/assets/2294e97e-dd15-4a59-9673-c4f5c9981494)
+
 ### Результат тестов tests.py
-![image](https://github.com/user-attachments/assets/646453ac-dcd4-42d2-ac98-0bf0beb44d46)
+![image](https://github.com/user-attachments/assets/6fb741f3-048a-4eb1-a7bf-c28b07321b92)
+
